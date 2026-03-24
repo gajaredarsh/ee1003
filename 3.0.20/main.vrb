@@ -1,0 +1,6 @@
+\frametitle{Python Code}
+\resizebox{\textwidth}{!}{
+\begin{minipage}{1.2\textwidth}
+\lstinputlisting{codes/prob.py}
+\end{minipage}
+}
