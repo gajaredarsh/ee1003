@@ -1,0 +1,93 @@
+\documentclass{beamer}
+\usepackage{amsmath}
+
+\usetheme{Madrid}
+
+\title{Probability Problem (MA 2007)}
+\author{Darsh Pankaj Gajare-EE25BTECH11020}
+\date{}
+
+\begin{document}
+
+\frame{\titlepage}
+
+% Slide 1: Question
+\begin{frame}{Problem Statement}
+Consider two identical boxes $B_1$ and $B_2$, where the box $B_i$ $(i = 1,2)$ contains $i+1$ red balls and $5 - (i + 1)$ white balls. A fair die is cast. Let the number on the top face be $N$. If $N$ is even or $5$, draw two balls (with replacement) from $B_1$.Otherwise, draw two balls (with replacement) from $B_2$. Find the probability that the two drawn balls are of \textbf{different colours}.
+\begin{enumerate}
+    \item[(a)] $\dfrac{7}{25}$
+    \item[(b)] $\dfrac{9}{25}$
+    \item[(c)] $\dfrac{12}{25}$
+    \item[(d)] $\dfrac{16}{25}$
+\end{enumerate}
+\end{frame}
+
+% Slide 2: Total Probability Theorem
+\begin{frame}{Theorem Used}
+\begin{block}{Law of Total Probability}
+If $\{B_1, B_2\}$ is a partition, then:
+\[
+P(A) = P(B_1)P(A|B_1) + P(B_2)P(A|B_2)
+\]
+\end{block}
+
+\begin{itemize}
+    \item Here $A$ = ``different colours''
+    \item Conditioning on box chosen
+\end{itemize}
+\end{frame}
+
+% Slide 3: Box Probabilities
+\begin{frame}{Box Selection}
+Even numbers: $2,4,6$ + $5$ $\Rightarrow 4$ outcomes
+
+\[
+P(B_1) = \frac{4}{6} = \frac{2}{3}, \quad P(B_2) = \frac{1}{3}
+\]
+\end{frame}
+
+
+% Slide 5: Different Colours
+\begin{frame}{Key Idea}
+\begin{block}{Addition Rule}
+\[
+P(RW \cup WR) = P(RW) + P(WR)
+\]
+\end{block}
+Since drawing is \textbf{with replacement}, draws are independent.
+
+\[
+P(\text{different}) = 2 \cdot P(R)\cdot P(W)
+\]
+
+$B_1$: 2 red, 3 white
+
+\[
+P(\text{different}|B_1) = 2 \cdot \frac{2}{5}\cdot \frac{3}{5} = \frac{12}{25}
+\]
+
+$B_2$: 3 red, 2 white
+
+\[
+P(\text{different}|B_2) = 2 \cdot \frac{3}{7}\cdot \frac{2}{5} = \frac{12}{25}
+\]
+\end{frame}
+
+% Slide 8: Final Answer
+\begin{frame}{Final Probability}
+Using total probability:
+
+\[
+P = \frac{2}{3}\cdot \frac{12}{25} + \frac{1}{3}\cdot \frac{12}{25}
+= \frac{12}{25}
+\]
+
+\begin{block}{Answer}
+\[
+\boxed{\frac{12}{25}}
+\]
+\end{block}
+
+\end{frame}
+
+\end{document}
