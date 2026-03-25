@@ -1,29 +1,26 @@
-from fractions import Fraction
+import numpy as np
 
-# Box compositions (total = 5)
-# B1: 2 red, 3 white
-# B2: 3 red, 2 white
+# number of simulations
+N = 1_000_000
 
-R1, W1 = 2, 3
-R2, W2 = 3, 2
+# simulate die rolls (1-6)
+die = np.random.randint(1, 7, size=N)
 
-T1 = R1 + W1  # = 5
-T2 = R2 + W2  # = 5
+# decide which box to use: True = B1, False = B2
+use_B1 = (die % 2 == 0) | (die == 5)
 
-# Probability of selecting boxes
-P_B1 = Fraction(4, 6)  # even + 5
-P_B2 = Fraction(2, 6)
+# probabilities
+# B1: P(R)=2/5, B2: P(R)=3/5
+p_red = np.where(use_B1, 2/5, 3/5)
 
-# Function for different colours (with replacement)
-def prob_different(R, W, T):
-    return 2 * Fraction(R, T) * Fraction(W, T)
+# draw two balls (with replacement)
+draw1 = np.random.rand(N) < p_red
+draw2 = np.random.rand(N) < p_red
 
-# Compute probabilities
-P_diff_B1 = prob_different(R1, W1, T1)
-P_diff_B2 = prob_different(R2, W2, T2)
+# check if colors are different
+different = draw1 != draw2
 
-# Total probability
-P_total = P_B1 * P_diff_B1 + P_B2 * P_diff_B2
+# estimate probability
+prob = np.mean(different)
 
-# Output
-print("P(different colours) =", P_total)
+print("Estimated probability:", prob)

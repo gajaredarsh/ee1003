@@ -1,41 +1,51 @@
-import matplotlib.pyplot as plt
 import numpy as np
+import matplotlib.pyplot as plt
 
-# ── Solve the problem ──────────────────────────────────────────
-p, d, Q = 10, 4, 100          # example values (p > d)
+# Given values
+p = 100
+d = 60
+Q = 300
 
-t_p   = Q / p                 # production phase duration
-I_max = (p - d) * t_p         # maximum cycle inventory  = Q(p-d)/p
-T     = t_p + I_max / d       # total cycle time
+# Derived values
+t1 = Q / p
+I_max = (Q/p)*(p - d)
+t_end = t1 + I_max/d  # time when inventory hits zero
 
-print(f"  Parameters : p={p}, d={d}, Q={Q}")
-print("  I_max = Q(p-d)/p = ", I_max)
+# Time axis (only until inventory becomes zero)
+t = np.linspace(0, t_end, 200)
 
-# ── Plot ───────────────────────────────────────────────────────
-t1   = np.linspace(0,   t_p, 300)
-t2   = np.linspace(t_p, T,   300)
-inv1 = (p - d) * t1
-inv2 = I_max - d * (t2 - t_p)
+# Inventory function (no negative values)
+inventory = np.piecewise(
+    t,
+    [t <= t1, t > t1],
+    [lambda t: (p - d)*t,
+     lambda t: I_max - d*(t - t1)]
+)
 
-fig, ax = plt.subplots(figsize=(5, 3))
+# Plot
+plt.figure()
+plt.plot(t, inventory, linewidth=2)
 
-ax.plot(t1, inv1, 'k-', linewidth=1.8)
-ax.plot(t2, inv2, 'k-', linewidth=1.8)
-ax.plot([t_p, t_p], [0, I_max], 'k--', linewidth=0.8)
-ax.plot([0,   t_p], [I_max, I_max], 'k--', linewidth=0.8)
+# Mark key points
+plt.scatter([0, t1, t_end], [0, I_max, 0], zorder=3)
 
-ax.set_xlabel(r'Time', fontsize=10)
-ax.set_ylabel(r'Inventory', fontsize=10)
-ax.set_xlim(0, T * 1.05)
-ax.set_ylim(0, I_max * 1.25)
-ax.set_xticks([0, t_p, T])
-ax.set_xticklabels([r'$0$', r'$t_p$', r'$T$'], fontsize=9)
-ax.set_yticks([0, I_max])
-ax.set_yticklabels([r'$0$', r'$I_{\max}$'], fontsize=9)
-ax.text(t_p * 0.28, I_max * 0.32, r'slope $= p - d$', fontsize=8)
-ax.text(t_p * 1.12, I_max * 0.58, r'slope $= -d$',    fontsize=8)
-ax.spines['top'].set_visible(False)
-ax.spines['right'].set_visible(False)
+# Annotate points
+plt.text(0, 0, "(0,0)", fontsize=9, ha='left', va='bottom')
+plt.text(t1, I_max, f"(3,120)", fontsize=9, ha='left', va='bottom')
+plt.text(t_end, 0, f"(5,0)", fontsize=9, ha='right', va='top')
 
-plt.tight_layout()
-plt.savefig('../figs/inventory.png')
+# Axes lines
+plt.axhline(0)
+plt.axvline(0)
+
+# Labels
+plt.xlabel("Time (days)")
+plt.ylabel("Inventory (units)")
+plt.title("Inventory vs Time (Non-negative EPQ Cycle)")
+
+plt.xlim(0, t_end + 1)
+plt.ylim(0, I_max + 20)
+
+plt.grid()
+plt.savefig("../figs/inventory.png")
+plt.show()

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.9.13)  24 MAR 2026 17:27
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.9.13)  25 MAR 2026 16:44
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -928,11 +928,7 @@ thkerncmss.
 ]
 \openout4 = `main.vrb'.
 
- (./main.vrb (./codes/prob.py))
-Overfull \vbox (7.73094pt too high) detected at line 114
- []
-
-[7
+ (./main.vrb (./codes/prob.py)) [7
 
 ]
 \tf@nav=\write6
@@ -953,13 +949,13 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 23475 strings out of 474222
- 444284 string characters out of 5748733
- 2052975 words of memory out of 5000000
- 45245 multiletter control sequences out of 15000+600000
+ 23476 strings out of 474222
+ 444295 string characters out of 5748733
+ 2029975 words of memory out of 5000000
+ 45246 multiletter control sequences out of 15000+600000
  565756 words of font info for 64 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 128i,15n,123p,409b,1460s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 128i,15n,123p,409b,1458s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb></usr/share/texl
@@ -969,7 +965,7 @@ ist/fonts/type1/public/amsfonts/cm/cmssi10.pfb></usr/share/texlive/texmf-dist/f
 onts/type1/public/amsfonts/cm/cmssi8.pfb></usr/share/texlive/texmf-dist/fonts/t
 ype1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
 ublic/amsfonts/cm/cmtt8.pfb>
-Output written on main.pdf (7 pages, 117587 bytes).
+Output written on main.pdf (7 pages, 117783 bytes).
 PDF statistics:
  313 PDF objects out of 1000 (max. 8388607)
  242 compressed objects within 3 object streams
