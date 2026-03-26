@@ -166,5 +166,133 @@ K_p = 100,\quad K_D = 0.9
 
 	\lstinputlisting{codes/verify.py}
 
+%--------------------------------
 
+\begin{frame}{Velocity Error Constant ($K_v$)}
+
+\begin{block}{Definition}
+\[
+K_v = \lim_{s \to 0} sG(s)
+\]
+\end{block}
+
+\begin{block}{Meaning}
+$K_v$ measures how well a system tracks a \textbf{ramp input} (continuously increasing input).
+\end{block}
+
+\begin{block}{Steady-State Error}
+\[
+e_{ss} = \frac{1}{K_v}
+\]
+\end{block}
+
+\begin{block}{Practical Interpretation}
+\begin{itemize}
+\item Higher $K_v$ $\Rightarrow$ smaller tracking error
+\item Lower $K_v$ $\Rightarrow$ larger tracking error
+\end{itemize}
+\end{block}
+
+\begin{block}{Example}
+For $K_v = 1000$:
+\[
+e_{ss} = \frac{1}{1000} = 0.001
+\]
+$\Rightarrow$ Excellent tracking performance
+\end{block}
+
+\end{frame}
+\begin{frame}{Velocity Error Constant ($K_v$)}
+
+
+\begin{block}{Example}
+Cruise control:
+\begin{itemize}
+\item High $K_v$ $\Rightarrow$ car follows increasing speed closely
+\item Low $K_v$ $\Rightarrow$ car falls behind desired speed
+\end{itemize}
+\end{block}
+
+\end{frame}
+%--------------------------------
+\begin{frame}{Ramp Tracking Demonstration}
+
+\begin{figure}
+\includegraphics[width=0.9\linewidth]{figs/Kv.png}
+\caption{Higher $K_v$ improves tracking of ramp input}
+\end{figure}
+
+\end{frame}
+
+%--------------------------------
+\begin{frame}{Damping Ratio ($\zeta$)}
+
+\begin{block}{Definition}
+\[
+\zeta = \text{Damping Ratio}
+\]
+\end{block}
+
+\begin{block}{Standard Form}
+\[
+s^2 + 2\zeta \omega_n s + \omega_n^2 = 0
+\]
+\end{block}
+
+\begin{block}{Meaning}
+$\zeta$ determines how \textbf{smooth or oscillatory} the system response is.
+\end{block}
+
+\begin{block}{Behavior}
+\begin{itemize}
+\item $0 < \zeta < 1$ $\Rightarrow$ Oscillatory (underdamped)
+\item $\zeta = 0.5$ $\Rightarrow$ Moderate overshoot
+\item $\zeta = 1$ $\Rightarrow$ No oscillation (critical damping)
+\item $\zeta > 1$ $\Rightarrow$ Slow response (overdamped)
+\end{itemize}
+\end{block}
+
+
+
+\end{frame}
+\begin{frame}{Damping Ratio ($\zeta$)}
+
+
+
+\begin{block}{Practical Meaning}
+$\zeta$ determines how \textbf{smoothly the system reaches its target}.
+\end{block}
+
+
+
+\begin{block}{Example}
+Car suspension:
+\begin{itemize}
+\item Low $\zeta$ $\Rightarrow$ bouncing
+\item Proper $\zeta$ $\Rightarrow$ smooth settling
+\end{itemize}
+\end{block}
+
+\end{frame}
+%--------------------------------
+\begin{frame}{Damping Demonstration}
+
+\begin{figure}
+\includegraphics[width=0.9\linewidth]{figs/zeta.png}
+\caption{Effect of damping ratio on step response}
+\end{figure}
+
+\end{frame}
+
+%--------------------------------
+\begin{frame}{Bode Plots of Transfer Function}
+\begin{figure}
+\includegraphics[width=0.9\linewidth]{figs/bodem.png}
+\end{figure}
+\end{frame}
+\begin{frame}
+\begin{figure}
+\includegraphics[width=0.9\linewidth]{figs/bodef.png}
+\end{figure}
+\end{frame}
 \end{document}

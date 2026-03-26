@@ -60,9 +60,9 @@ def plot_system(K):
     plt.xlabel("n")
     plt.ylabel("y[n]")
     plt.grid()
-    plt.savefig("../figs/output.png")
+    plt.savefig("../figs/output1.png")
     plt.close()
 
 
 # Run
-plot_system(0.3)
+plot_system(0.7)
