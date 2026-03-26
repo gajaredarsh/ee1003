@@ -1,0 +1,156 @@
+\documentclass{beamer}
+\usetheme{Madrid}
+
+\usepackage{amsmath, amssymb}
+
+\title[PD Controller Design]{Control Systems Problem}
+\author{Darsh Pankaj Gajare --- EE25BTECH11020}
+\date{}
+
+\begin{document}
+
+%----------- Title Page -----------
+\begin{frame}
+  \titlepage
+\end{frame}
+
+%----------- Problem Statement -----------
+\begin{frame}{Question}
+A control system with a PD controller is shown. If the velocity error constant $K_v = 1000$ and the damping ratio $\zeta = 0.5$, then the values of $K_D$ and $K_D$ are:
+	\begin{figure}
+		\centering
+		\includegraphics[scale=0.5]{figs/question.png}
+	\end{figure}
+	\begin{enumerate}
+		\item $K_P=100$, $K_D=0.09$
+		\item $K_P=100$, $K_D=0.9$
+		\item $K_P=10$, $K_D=0.09$
+		\item $K_P=10$, $K_D=0.9$
+	\end{enumerate}
+\end{frame}
+
+%----------------------------------------
+\begin{frame}{Given}
+
+\begin{itemize}
+\item Controller: $K_p + K_D s$
+\item Plant: $\dfrac{100}{s(s+10)}$
+\item Unity feedback system
+\item $K_v = 1000$
+\item $\zeta = 0.5$
+\end{itemize}
+
+Find:
+\[
+K_p, \quad K_D
+\]
+
+\end{frame}
+
+%----------------------------------------
+\begin{frame}{Step 1: Open-loop Transfer Function}
+
+\[
+G(s) = \frac{100(K_p + K_D s)}{s(s+10)}
+\]
+
+\end{frame}
+
+%----------------------------------------
+\begin{frame}{Step 2: Velocity Error Constant}
+
+\[
+K_v = \lim_{s \to 0} sG(s)
+\]
+
+\[
+K_v = \lim_{s \to 0} \frac{100(K_p + K_D s)}{s+10}
+\]
+
+As $s \to 0$:
+\[
+K_v = \frac{100K_p}{10} = 10K_p
+\]
+
+\[
+10K_p = 1000 \Rightarrow K_p = 100
+\]
+
+\end{frame}
+
+%----------------------------------------
+\begin{frame}{Step 3: Characteristic Equation}
+
+\[
+1 + G(s) = 0
+\]
+
+\[
+s(s+10) + 100(K_p + K_D s) = 0
+\]
+
+\[
+s^2 + (10 + 100K_D)s + 100K_p = 0
+\]
+
+\end{frame}
+
+%----------------------------------------
+\begin{frame}{Step 4: Standard Form Comparison}
+
+\[
+s^2 + 2\zeta \omega_n s + \omega_n^2 = 0
+\]
+
+Matching terms:
+\[
+\omega_n^2 = 100K_p
+\]
+\[
+2\zeta \omega_n = 10 + 100K_D
+\]
+
+\end{frame}
+
+%----------------------------------------
+\begin{frame}{Step 5: Natural Frequency}
+
+\[
+\omega_n^2 = 100 \times 100 = 10000
+\]
+
+\[
+\omega_n = 100
+\]
+
+\end{frame}
+
+%----------------------------------------
+\begin{frame}{Step 6: Damping Ratio}
+
+\[
+2\zeta \omega_n = 2 \times 0.5 \times 100 = 100
+\]
+
+\[
+10 + 100K_D = 100
+\]
+
+\[
+100K_D = 90 \Rightarrow K_D = 0.9
+\]
+
+\end{frame}
+
+%----------------------------------------
+\begin{frame}{Final Answer}
+
+\begin{alertblock}{Result}
+\[
+K_p = 100,\quad K_D = 0.9
+\]
+\end{alertblock}
+
+\end{frame}
+
+\end{document}
