@@ -2,7 +2,18 @@
 \usetheme{Madrid}
 
 \usepackage{amsmath, amssymb}
-
+\usepackage{listings}
+\usepackage{xcolor}
+\lstset{
+	    language=Python,
+	        basicstyle=\ttfamily\small,
+		    keywordstyle=\color{blue},
+		        commentstyle=\color{green!60!black},
+			    stringstyle=\color{red},
+			        breaklines=true,
+				    frame=single
+			    }
+			    
 \title[PD Controller Design]{Control Systems Problem}
 \author{Darsh Pankaj Gajare --- EE25BTECH11020}
 \date{}
@@ -16,7 +27,7 @@
 
 %----------- Problem Statement -----------
 \begin{frame}{Question}
-A control system with a PD controller is shown. If the velocity error constant $K_v = 1000$ and the damping ratio $\zeta = 0.5$, then the values of $K_D$ and $K_D$ are:
+A control system with a PD controller is shown. If the velocity error constant $K_v = 1000$ and the damping ratio $\zeta = 0.5$, then the values of $K_P$ and $K_D$ are:
 	\begin{figure}
 		\centering
 		\includegraphics[scale=0.5]{figs/question.png}
@@ -152,5 +163,8 @@ K_p = 100,\quad K_D = 0.9
 \end{alertblock}
 
 \end{frame}
+
+	\lstinputlisting{codes/verify.py}
+
 
 \end{document}
